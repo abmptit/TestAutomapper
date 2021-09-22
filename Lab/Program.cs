@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Dynamic;
 
 namespace Lab
@@ -7,16 +8,18 @@ namespace Lab
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var config = new MapperConfiguration(
+                cfg =>
+                {
+                    cfg.CreateMap<ISourceCollection, DestinationCollection>();
+                    cfg.CreateMap<SourceSurvey, DestinationSurvey>()
+                          .ForMember(m => m.Collection, act => act.MapFrom(src => src.Collection));
+                });
 
-            var mapper = MapperHelpers.CreateMapper();
+            var mapper = config.CreateMapper();
 
             dynamic dynamicSurvey = new ExpandoObject();
             var sourceSurvey = mapper.Map<SourceSurvey>(dynamicSurvey);
-
-            dynamic dynamicSource = new ExpandoObject();
-            dynamicSource.Name = "toto";
-            var source = mapper.Map<SourceCollection>(dynamicSource);
 
             var destinationSurvey = mapper.Map<DestinationSurvey>(sourceSurvey);
 

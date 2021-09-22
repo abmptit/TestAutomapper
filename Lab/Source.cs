@@ -13,7 +13,6 @@ namespace Lab
         int Count();
     }
 
-
     public interface ISourceEntity
     {
         string Name { get; set; }

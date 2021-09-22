@@ -41,11 +41,11 @@ namespace Lab
 
     public interface IDestinationSurvey
     {
-        ISourceCollection Collection { get; set; }
+        IDestinationCollection Collection { get; set; }
     }
 
     public class DestinationSurvey : IDestinationSurvey
     {
-        public ISourceCollection Collection { get; set; }
+        public IDestinationCollection Collection { get; set; }
     }
 }
