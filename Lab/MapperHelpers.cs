@@ -13,20 +13,10 @@ namespace Lab
                 {
                     cfg.CreateMap<ISourceCollection, DestinationCollection>();
                     //cfg.CreateMap<ISourceSurvey, IDestinationSurvey>();
-                    cfg.CreateMap<SourceSurvey, DestinationSurvey>();
+                    cfg.CreateMap<SourceSurvey, DestinationSurvey>()
+                          .ForMember(m => m.Collection, act => act.MapFrom(src => src.Collection));
                 });
-            //var config = new MapperConfiguration(
-            //    cfg =>
-            //    {
-            //        //cfg.CreateMap<ISourceCollection, IDestinationCollection>().ReverseMap();
-            //        cfg.CreateMap<ExpandoObject, SourceCollection>();
-            //        //.ForAllMembers((options) => options.MapFrom((resolution) =>
-            //        //{
-            //        //    var dictionary = (IDictionary<string, object>)resolution..Context.SourceValue;
-            //        //    return dictionary[resolution.Context.MemberName];
-            //        //}));
 
-            //    });
             var mapper = config.CreateMapper();
             return mapper;
         }
