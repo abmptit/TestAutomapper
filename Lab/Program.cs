@@ -9,12 +9,16 @@ namespace Lab
         {
             Console.WriteLine("Hello World!");
 
+            var mapper = MapperHelpers.CreateMapper();
+
+            dynamic dynamicSurvey = new ExpandoObject();
+            var sourceSurvey = mapper.Map<SourceSurvey>(dynamicSurvey);
+
             dynamic dynamicSource = new ExpandoObject();
             dynamicSource.Name = "toto";
-            var mapper = MapperHelpers.CreateMapper();
             var source = mapper.Map<SourceCollection>(dynamicSource);
 
-            var destination = mapper.Map<IDestinationCollection>(source);
+            var destinationSurvey = mapper.Map<DestinationSurvey>(sourceSurvey);
 
             Console.ReadKey();
         }

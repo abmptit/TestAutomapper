@@ -12,6 +12,8 @@ namespace Lab
                 cfg =>
                 {
                     cfg.CreateMap<ISourceCollection, DestinationCollection>();
+                    //cfg.CreateMap<ISourceSurvey, IDestinationSurvey>();
+                    cfg.CreateMap<SourceSurvey, DestinationSurvey>();
                 });
             //var config = new MapperConfiguration(
             //    cfg =>

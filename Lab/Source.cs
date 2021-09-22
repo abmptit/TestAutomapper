@@ -39,4 +39,14 @@ namespace Lab
             return (IEnumerator)this;
         }
     }
+
+    public interface ISourceSurvey
+    {
+        ISourceCollection Collection { get; set; }
+    }
+
+    public class SourceSurvey : ISourceSurvey
+    {
+        public ISourceCollection Collection { get; set; }
+    }
 }
